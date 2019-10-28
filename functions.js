@@ -1,237 +1,187 @@
-// Write a program that calculates the maximum of two given numbers. 
+//1
+"use strict";
+function findMaxIndex(arr) {
+    var max = arr[0];
+    var index = 0;
+    for (var i = 0; i < arr.length; i++) {
+        if (max < arr[i]) {
+            max = arr[i];
+            index = i;
+        }
 
-function maxi(a, b) {
-    return (a >= b) ? a : b;
-}
-
-console.log(maxi(3, 1));
-
-// Write a program that checks if a given number is odd.
-
-function oddNumber(a) {
-
-    return (a % 2 === 0) ? false : true;
-}
-
-console.log(oddNumber(4));
-
-// Write a program that checks if a given number is a three digit long number.
-
-function threeDigitNumber(a) {
-
-    var b = a;
-
-    if (b < 0) {
-        b = -b;
     }
+    return index;
+}
+function finMinIndex(arr) {
+    var min = arr[0];
+    var index = 0;
+    for (var i = 0; i < arr.length; i++) {
+        if (min > arr[i]) {
+            min = arr[i];
+            index = i;
+        }
 
-    if (b >= 100 && b <= 999) {
-        return "Ima 3 cifre.";
-    } else {
-        return "Nema 3 cifre.";
     }
-
+    return index;
 }
-
-
-console.log(threeDigitNumber(-1006));
-
-// Write a program that calculates an arithmetic mean of four numbers.
-
-function arithmeticMean(a, b, c, d) {
-    return (a + b + c + d) / 4;
+function switchPlaces(arr, index_1, index_2) {
+    var help = arr[index_1];
+    arr[index_1] = arr[index_2];
+    arr[index_2] = help;
+    return arr;
 }
-
-console.log(arithmeticMean(5, 6, 10, 14));
+var array = [3, 500, 12, 149, 53, 414, 1, 19];
+var indexMax = findMaxIndex(array);
+console.log(indexMax);
+var indexMin = finMinIndex(array);
+console.log(switchPlaces(array, indexMax, indexMin));
+//2
+function manipulateArray(arr) {
+    var newArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === 0) {
+            newArr[i] = 20;
+            continue;
+        }
+        newArr[i] = arr[i];
+        newArr[i] /= 2;
+        newArr[i] += 5;
+    }
+    return newArr;
+}
+console.log(manipulateArray([3, 500, -10, 149, 53, 414, 1, 19]));
+//3
+function printNamesAndGrades(Names, Grades) {
+    var grade;
+    for (var i = 0; i < Names.length; i++) {
+        if (Grades[i] % 10 == 0) grade = Grades[i] / 10
+        else grade = parseInt(Grades[i] / 10) + 1;
+        if (grade < 6) console.log(Names[i] + " FAILED");
+        else console.log(Names[i] + " acquired " + Grades[i] + " points and earned " + grade)
+    }
+}
+var names = ["Micahel", "Anne", "Frank", "Joe", "John", "David", "Mark", "Bill"];
+var grades = [50, 39, 63, 72, 99, 51, 83, 59];
+printNamesAndGrades(names, grades);
+//6
+function problem6(value1, value2) {
+    var greater = (value1 > value2) ? value1 : value2;
+    var sum = 0;
+    for (var i = 1; i <= greater; i++) {
+        if (i % 2 === 0 && i <= value1) sum += i;
+        if (i % 2 === 1 && i <= value2) sum -= i;
+    }
+    return sum;
+}
+console.log(12.5 * problem6(1000, 500));
 
 //
+var strings = ["M", "Anne", 12, "Steve", "Joe", "John", "David", "Mark", true, "A"];
 
-// Write a program that draws a square of a given size. For example,  if the size of square is 5 the program should draw: 
-// * * * * *
-// *       *
-// *       *
-// *       *
-// * * * * *
-
-function square(a) {
-    var row = '';
-
-    for (var i = 0; i < a; i++) {
-        for (var j = 0; j < a; j++) {
-            if (i === 0 || j === 0 || i === a - 1 || j === a - 1) {
-                row += '* ';
-            } else {
-                row += "  ";
+function firstTwoLett(arr) {
+    var newString = "";
+    for (var i = 0; i < arr.length; i++) {
+        if (typeof arr[i] === "string") {
+            if (arr[i].length >= 2) {
+                newString += arr[i][0] + arr[i][1];
             }
         }
-
-        row += '\n';
     }
-
-    return row;
+    return newString;
 }
-
-console.log(square(5));
-
-// Write a program that draws a horizontal chart representing three given values. For example, if values are 5, 3, and 7, the program should draw:
-//* * * * *
-//* * *
-//* * * * * * *
-
-
-function stars(a, b, c) {
-
-    var str = '';
-
-    for (var i = 0; i < a; i++) {
-
-        str += '* ';
-
+console.log(firstTwoLett(strings));
+//
+function reverseString(string) {
+    var newString = "";
+    for (var i = string.length - 1; i >= 0; i--) {
+        newString += string[i];
     }
-
-    str += '\n';
-
-    for (var i = 0; i < b; i++) {
-
-        str += '* ';
-
-    }
-
-    str += '\n';
-
-    for (var i = 0; i < c; i++) {
-
-        str += '* ';
-
-    }
-
-    return str;
-
+    return newString;
 }
-
-console.log(stars(8, 2, 4));
-
-
-// Write a program that calculates a number of digits of a given number. 
-
-
-function numberOfDigits(a) {
-
-    var result = '';
-
-    //konvertovanje broja a u string
-
-    result += a;
-
-    return result.length;
-
-}
-
-console.log(numberOfDigits(45678768465));
-
-
-// Write a program that calculates a number of appearances of a given number in a given array.
-// Inputs: a = [2, 4, 7, 8, 7, 7, 1], e = 7
-// Result: 3
-
-function numberOfAppearances(a, b) {
-
-    var result = 0;
-
-    for (var i = 0; i < b.length; i++) {
-
-        if (b[i] === a) {
-            result++;
-        }
-
-    }
-
-    return "There are " + result + " appearances."
-
-}
-
-console.log(numberOfAppearances(7, [2, 4, 7, 8, 7, 7, 1]));
-
-
-// Write a program that calculates the sum of odd elements of a given array. 
-
-function sumOfOddElements(a) {
-
-    var sum = 0;
-    var numberOfOddNumbers = 0;
-
-    for (var i = 0; i < a.length; i++) {
-        if (a[i] % 2 !== 0) {
-            sum += a[i];
-            numberOfOddNumbers++;
+var bit = "Belgrade Institute of Technology";
+console.log(reverseString(bit));
+//
+function pairs(value1, value2) {
+    var counter = 0;
+    for (var i = value1; i <= value2; i++) {
+        for (var j = value1; j <= value2; j++) {
+            if (i !== j) {
+                console.log("(" + i + "," + j + ")");
+                counter++;
+            }
         }
     }
-
-    if (numberOfOddNumbers === 0) {
-        return "There are no odd numbers."
-    }
-
-    return "The sum of odd numbers is " + sum + ".";
-
+    console.log(counter);
 }
-
-console.log(sumOfOddElements([20, -6, 4]));
-
-
-// Write a program that calculates the number of appearances of a letter a in a given string. 
-// Modify the program so it calculates the number of both letters a and A.
-
-function numberOfAppearancesLetter(a, b) {
-
-    var result = 0;
-
-    for (var i = 0; i < b.length; i++) {
-
-        if (b[i] === a) {
-            result++;
-        }
-
+pairs(1, 7);
+//
+function isPrime(n) {
+    if (n === 2) return true;
+    for (var i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
     }
-
-    return "There are " + result + " appearance(s)."
-
+    return true;
 }
-
-console.log(numberOfAppearancesLetter('q', "AQWEfghy"));
-
-
-function numberOfAppearancesLetterCaseNotSensitive(a, b) {
-
-    var result = 0;
-
-    for (var i = 0; i < b.length; i++) {
-
-        if (b[i] === a || b[i] === "A") {
-            result++;
-        }
-
+console.log(isPrime(199));
+//
+function isPalindrome(string) {
+    for (var i = 0; i < string.length; i++) {
+        if (string[i] !== string[string.length - 1 - i]) return false;
     }
-
-    return "There are " + result + " appearance(s)."
-
+    return true;
 }
-
-console.log(numberOfAppearancesLetterCaseNotSensitive('a', "AQWEafghy"));
-
-//Write a program that concatenates a given string given number of times. 
-//For example, if “abc” and 4 are given values, the program prints out abcabcabcabc. 
-
-
-function concatenateStrings(str, b) {
-
-    var result = "";
-
-    for (i = 0; i < b; i++) {
-        result += str;
+console.log(isPalindrome("ANA"));
+//
+function greatestCommonDivisor(number1, number2) {
+    var result;
+    var greater = (number1 > number2) ? number1 : number2;
+    for (var i = 0; i <= greater / 2; i++) {
+        if (number1 % i === 0 && number2 % i === 0) result = i;
     }
-
     return result;
 }
+console.log(greatestCommonDivisor(666, 777));
+//
+function bubbleSort(numbers) {
+    var swapped = true;
+    var help;
+    while (true) {
+        swapped = false;
+        for (var i = 0; i < numbers.length - 1; i++) {
+            if (numbers[i] > numbers[i + 1]) {
+                help = numbers[i];
+                numbers[i] = numbers[i + 1];
+                numbers[i + 1] = help;
+                swapped = true;
+            }
+        }
+        if (swapped === false) break;
+    }
+}
+var arr = [13, 11, 15, 5, 6, 1, 8, 12];
+bubbleSort(arr);
+for (var i = 0; i < arr.length; i++) {
+    arr[i] *= 2;
+}
+console.log(arr);
+//
+function bubbleSortDescending(numbers) {
+    var swapped = true;
+    var help;
+    while (true) {
+        swapped = false;
+        for (var i = 0; i < numbers.length - 1; i++) {
+            if (numbers[i] < numbers[i + 1]) {
+                help = numbers[i];
+                numbers[i] = numbers[i + 1];
+                numbers[i + 1] = help;
+                swapped = true;
+            }
+        }
+        if (swapped === false) break;
+    }
+}
+arr = [13, 11, 15, 5, 6, 1, 8, 12];
+bubbleSortDescending(arr);
+console.log(arr);
 
-
-console.log(concatenateStrings("abcde", 4));
