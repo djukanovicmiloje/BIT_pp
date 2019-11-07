@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+input,
+#outbox {
+  background: lightblue;
+  border: none;
+  outline: none;
+  height: 2em;
+  line-height: 2em;
+  display: block;
+  margin: 1em 2em;
+  width: 10em;
+}
+#outBox {
+  height: 5em;
+  background: lightblue;
+}
+.red_border {
+  border: 2px solid red;
+}
